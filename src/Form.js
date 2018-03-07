@@ -17,7 +17,7 @@ export class Form extends React.Component {
           validate={[required, notEmpty, requiredLength, isNumber]}
         />
         <label>What is your issue?</label>
-        <Field component="select" name="issue">
+        <Field component="select" name="issue" validate={[required]}>
           <option value="My delivery hasn't arrived">
             My delivery hasn't arrived
           </option>
