@@ -1,7 +1,8 @@
 import React from 'react';
 import './Form.css';
-import {Field, reduxForm} from 'redux-form'
-import {required, notEmpty, requiredLength, isNumber} from './validators';
+import { Field, reduxForm } from 'redux-form';
+import { required, notEmpty, requiredLength, isNumber } from './validators';
+import Input from './input';
 
 export class Form extends React.Component {
   render() {
@@ -9,9 +10,14 @@ export class Form extends React.Component {
       <form>
         <h2>Report a problem with your delivery</h2>
         <label>Tracking Number</label>
-        <Field component="input" type="text" />
+        <Field
+          component={Input}
+          type="text"
+          name="tracking-number"
+          validate={[required, notEmpty, requiredLength, isNumber]}
+        />
         <label>What is your issue?</label>
-        <Field component="select">
+        <Field component="select" name="issue">
           <option value="My delivery hasn't arrived">
             My delivery hasn't arrived
           </option>
@@ -29,9 +35,10 @@ export class Form extends React.Component {
           </option>
         </Field>
         <label>Give more details (optional)</label>
-        <Field component="textarea" rows="4" cols="50">
+        <Field component="textarea" rows="4" cols="50" name="other-issue">
           {' '}
         </Field>
+        <input type="submit" />
       </form>
     );
   }
