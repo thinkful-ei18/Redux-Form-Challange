@@ -23,6 +23,7 @@ export class Form extends React.Component {
       }
     )
       .then(res => {
+        console.log(res);
         this.setState({ ok: res.ok, failure: res.ok });
       })
       .catch(err => console.log(err));
@@ -34,11 +35,7 @@ export class Form extends React.Component {
         <h1>Success!</h1>
       </div>
     ) : null;
-    let failure = !this.state.failure ? (
-      <div>
-        <h1>Delivery not found!</h1>
-      </div>
-    ) : null;
+    let failure = !this.state.failure ? (  <div> <h1>Delivery not found!</h1> </div>) : null;
     return (
       <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <h2>Report a problem with your delivery</h2>
